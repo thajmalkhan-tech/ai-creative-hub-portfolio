@@ -89,6 +89,6 @@
   }
 
   .section-alt {
-    background-color: hsl(0 0% 96%);
+    background-color: hsl(var(--secondary));
   }
 }
