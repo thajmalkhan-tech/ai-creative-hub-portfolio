@@ -38,9 +38,6 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-16">
-        <a href="#home" className="text-xl font-bold text-primary tracking-tight">
-          TK
-        </a>
 
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-8">
