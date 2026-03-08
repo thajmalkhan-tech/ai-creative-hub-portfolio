@@ -1,5 +1,7 @@
-const Footer = () => (
-  <footer className="bg-primary text-primary-foreground py-8 px-6 text-center">
+import React from "react";
+
+const Footer = React.forwardRef<HTMLElement>((_, ref) => (
+  <footer ref={ref} className="bg-primary text-primary-foreground py-8 px-6 text-center">
     <div className="max-w-7xl mx-auto">
       <div className="flex justify-center gap-6 mb-4">
         {[
@@ -23,6 +25,8 @@ const Footer = () => (
       </p>
     </div>
   </footer>
-);
+));
+
+Footer.displayName = "Footer";
 
 export default Footer;
