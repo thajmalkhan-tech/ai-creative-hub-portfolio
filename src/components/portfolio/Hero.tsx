@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { User } from "lucide-react";
+import profileImage from "@/assets/profile.jpg";
 
 const Hero = () => {
   return (
@@ -54,16 +54,18 @@ const Hero = () => {
           </div>
         </motion.div>
 
-        {/* Photo placeholder */}
+        {/* Profile Photo */}
         <motion.div
           className="flex justify-center"
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
         >
-          <div className="w-72 h-72 md:w-80 md:h-80 rounded-2xl bg-secondary flex items-center justify-center border border-border shadow-lg">
-            <User className="w-24 h-24 text-muted-foreground" />
-          </div>
+          <img
+            src={profileImage}
+            alt="Thajmal Khan - AI Student & Creative Technologist"
+            className="w-72 h-72 md:w-80 md:h-80 rounded-2xl object-cover border border-border shadow-lg"
+          />
         </motion.div>
       </div>
     </section>
