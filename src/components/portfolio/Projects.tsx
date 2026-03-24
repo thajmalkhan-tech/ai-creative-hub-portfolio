@@ -1,24 +1,39 @@
 import { Button } from "@/components/ui/button";
 import { Mic, Github } from "lucide-react";
-import { useInView } from "@/hooks/useInView";
+import { motion } from "framer-motion";
 
 const Projects = () => {
-  const { ref, inView } = useInView();
-
   return (
-    <section id="projects" className="section-padding" ref={ref}>
-      <div
-        className={`max-w-7xl mx-auto transition-all duration-700 ${
-          inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-        }`}
+    <section id="projects" className="section-padding">
+      <motion.div
+        className="max-w-7xl mx-auto"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
       >
-        <h2 className="text-3xl font-bold text-foreground mb-10 text-center">Projects</h2>
+        <motion.h2
+          className="text-3xl font-bold text-foreground mb-10 text-center"
+          variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
+        >
+          Projects
+        </motion.h2>
 
-        <div className="max-w-2xl mx-auto bg-card rounded-xl border border-border p-8 shadow-sm">
+        <motion.div
+          className="max-w-2xl mx-auto bg-card rounded-xl border border-border p-8 shadow-sm"
+          variants={{
+            hidden: { opacity: 0, y: 40, scale: 0.95 },
+            show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6 } },
+          }}
+          whileHover={{ y: -4, boxShadow: "0 20px 40px -12px hsl(var(--accent) / 0.15)" }}
+        >
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+            <motion.div
+              className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center"
+              whileHover={{ rotate: 10, scale: 1.1 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
               <Mic className="w-6 h-6 text-primary" />
-            </div>
+            </motion.div>
             <div>
               <h3 className="text-xl font-semibold text-foreground">Voice Assistant</h3>
               <p className="text-sm text-muted-foreground">Python-based AI Project</p>
@@ -34,20 +49,23 @@ const Projects = () => {
           <div className="mb-6">
             <h4 className="text-sm font-semibold text-foreground mb-2">Tools & Technologies</h4>
             <div className="flex flex-wrap gap-2">
-              {["Python", "Speech Recognition", "System Automation", "NLP"].map(
-                (t) => (
-                  <span
-                    key={t}
-                    className="bg-secondary text-foreground text-xs font-medium px-3 py-1 rounded-full"
-                  >
-                    {t}
-                  </span>
-                )
-              )}
+              {["Python", "Speech Recognition", "System Automation", "NLP"].map((t, i) => (
+                <motion.span
+                  key={t}
+                  className="bg-secondary text-foreground text-xs font-medium px-3 py-1 rounded-full"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 + i * 0.08 }}
+                  whileHover={{ scale: 1.1 }}
+                >
+                  {t}
+                </motion.span>
+              ))}
             </div>
           </div>
 
-          <Button asChild variant="outline" size="sm">
+          <Button asChild variant="outline" size="sm" className="hover:scale-105 transition-transform">
             <a
               href="https://github.com/thajmalkhan-tech"
               target="_blank"
@@ -57,8 +75,8 @@ const Projects = () => {
               View on GitHub
             </a>
           </Button>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };
