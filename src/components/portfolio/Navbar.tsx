@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -14,22 +14,11 @@ const navLinks = [
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [dark, setDark] = useState(() => {
-    if (typeof window !== "undefined") {
-      return document.documentElement.classList.contains("dark");
-    }
-    return false;
-  });
-
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", dark);
-  }, [dark]);
 
   return (
     <nav
@@ -56,24 +45,10 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
-          <button
-            onClick={() => setDark(!dark)}
-            aria-label="Toggle dark mode"
-            className="p-2 rounded-full text-muted-foreground hover:text-primary hover:bg-secondary transition-colors"
-          >
-            {dark ? <Sun size={18} /> : <Moon size={18} />}
-          </button>
         </div>
 
         {/* Mobile toggle */}
         <div className="md:hidden flex items-center gap-2">
-          <button
-            onClick={() => setDark(!dark)}
-            aria-label="Toggle dark mode"
-            className="p-2 rounded-full text-muted-foreground hover:text-primary hover:bg-secondary transition-colors"
-          >
-            {dark ? <Sun size={20} /> : <Moon size={20} />}
-          </button>
           <button
             className="text-foreground"
             onClick={() => setIsOpen(!isOpen)}
