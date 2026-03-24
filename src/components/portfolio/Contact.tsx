@@ -2,13 +2,22 @@ import { Mail, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useInView } from "@/hooks/useInView";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 
+const container = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.1 } },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
 const Contact = () => {
-  const { ref, inView } = useInView();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [loading, setLoading] = useState(false);
 
@@ -34,29 +43,32 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="section-padding" ref={ref}>
-      <div
-        className={`max-w-7xl mx-auto transition-all duration-700 ${
-          inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-        }`}
+    <section id="contact" className="section-padding">
+      <motion.div
+        className="max-w-7xl mx-auto"
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
       >
-        <h2 className="text-3xl font-bold text-foreground mb-10 text-center">Get In Touch</h2>
+        <motion.h2 variants={fadeUp} className="text-3xl font-bold text-foreground mb-10 text-center">
+          Get In Touch
+        </motion.h2>
 
         <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
           {/* Info */}
-          <div className="space-y-6">
-            <div className="flex items-center gap-3">
-              <Mail className="w-5 h-5 text-accent" />
-              <a href="mailto:thajmalkhan123@gmail.com" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                thajmalkhan123@gmail.com
-              </a>
-            </div>
-            <div className="flex items-center gap-3">
-              <Phone className="w-5 h-5 text-accent" />
-              <a href="tel:+919087346082" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                +91 9087346082
-              </a>
-            </div>
+          <motion.div variants={fadeUp} className="space-y-6">
+            {[
+              { icon: Mail, text: "thajmalkhan123@gmail.com", href: "mailto:thajmalkhan123@gmail.com" },
+              { icon: Phone, text: "+91 9087346082", href: "tel:+919087346082" },
+            ].map(({ icon: Icon, text, href }) => (
+              <motion.div key={text} className="flex items-center gap-3" whileHover={{ x: 4 }}>
+                <Icon className="w-5 h-5 text-accent" />
+                <a href={href} className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                  {text}
+                </a>
+              </motion.div>
+            ))}
             <div className="flex items-center gap-3">
               <MapPin className="w-5 h-5 text-accent" />
               <span className="text-muted-foreground text-sm">Chennai, India</span>
@@ -70,22 +82,23 @@ const Contact = () => {
                   { label: "GitHub", href: "https://github.com/thajmalkhan-tech" },
                   { label: "Instagram", href: "https://www.instagram.com/_thajmal_khan_/" },
                 ].map((link) => (
-                  <a
+                  <motion.a
                     key={link.label}
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-secondary text-foreground text-xs font-medium px-3 py-1.5 rounded-full hover:bg-primary hover:text-primary-foreground transition-colors"
+                    whileHover={{ scale: 1.08, y: -2 }}
                   >
                     {link.label}
-                  </a>
+                  </motion.a>
                 ))}
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <motion.form variants={fadeUp} onSubmit={handleSubmit} className="space-y-4">
             <Input
               placeholder="Your Name"
               value={form.name}
@@ -106,12 +119,12 @@ const Contact = () => {
               onChange={(e) => setForm({ ...form, message: e.target.value })}
               required
             />
-            <Button type="submit" className="w-full" disabled={loading}>
+            <Button type="submit" className="w-full hover:scale-[1.02] transition-transform" disabled={loading}>
               {loading ? "Sending..." : "Send Message"}
             </Button>
-          </form>
+          </motion.form>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

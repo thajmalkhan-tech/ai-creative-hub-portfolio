@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -21,7 +22,10 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav
+    <motion.nav
+      initial={{ y: -80 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled ? "bg-background/95 backdrop-blur-sm shadow-sm" : "bg-transparent"
       }`}
@@ -34,15 +38,20 @@ const Navbar = () => {
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-8">
           <ul className="flex items-center gap-8">
-            {navLinks.map((l) => (
-              <li key={l.href}>
+            {navLinks.map((l, i) => (
+              <motion.li
+                key={l.href}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 + i * 0.05 }}
+              >
                 <a
                   href={l.href}
-                  className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+                  className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-[-4px] after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left"
                 >
                   {l.label}
                 </a>
-              </li>
+              </motion.li>
             ))}
           </ul>
         </div>
@@ -60,24 +69,37 @@ const Navbar = () => {
       </div>
 
       {/* Mobile menu */}
-      {isOpen && (
-        <div className="md:hidden bg-background border-t border-border">
-          <ul className="flex flex-col py-4 px-6 gap-4">
-            {navLinks.map((l) => (
-              <li key={l.href}>
-                <a
-                  href={l.href}
-                  onClick={() => setIsOpen(false)}
-                  className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="md:hidden bg-background border-t border-border overflow-hidden"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
+            <ul className="flex flex-col py-4 px-6 gap-4">
+              {navLinks.map((l, i) => (
+                <motion.li
+                  key={l.href}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.05 }}
                 >
-                  {l.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-    </nav>
+                  <a
+                    href={l.href}
+                    onClick={() => setIsOpen(false)}
+                    className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    {l.label}
+                  </a>
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.nav>
   );
 };
 
