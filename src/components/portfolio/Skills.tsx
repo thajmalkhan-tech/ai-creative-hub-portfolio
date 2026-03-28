@@ -7,7 +7,7 @@ const categories = [
   },
   {
     title: "Creative Skills",
-    skills: ["Video Editing", "Photo Editing", "Meme Creation", "Graphic Design"],
+    skills: ["Video Editing", "Meme Creation", "Graphic Design"],
   },
   {
     title: "Technical Skills",
