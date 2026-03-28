@@ -9,6 +9,7 @@ const services = [
       "Social media video editing",
       "Meme content creation",
       "Reels/Shorts editing",
+      "Photo editing & retouching",
       "Creative promotional edits",
     ],
   },
