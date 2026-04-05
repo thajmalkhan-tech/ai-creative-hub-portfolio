@@ -65,16 +65,27 @@ const Projects = () => {
             </div>
           </div>
 
-          <Button asChild variant="outline" size="sm" className="hover:scale-105 transition-transform">
-            <a
-              href="https://github.com/thajmalkhan-tech"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Github className="w-4 h-4 mr-2" />
-              View on GitHub
-            </a>
-          </Button>
+          <div className="flex gap-3">
+            <Button asChild variant="outline" size="sm" className="hover:scale-105 transition-transform">
+              <a
+                href="https://github.com/thajmalkhan-tech"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Github className="w-4 h-4 mr-2" />
+                View on GitHub
+              </a>
+            </Button>
+            <Button asChild variant="outline" size="sm" className="hover:scale-105 transition-transform">
+              <a
+                href="https://drive.google.com/drive/folders/1vPU2pGYW7cCdepcBLI2gtVB5V1B98sk3?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Project Files
+              </a>
+            </Button>
+          </div>
         </motion.div>
       </motion.div>
     </section>
