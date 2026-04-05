@@ -104,7 +104,7 @@ const Projects = () => {
             }}
             whileHover={{ y: -4, boxShadow: "0 20px 40px -12px hsl(var(--accent) / 0.15)" }}
           >
-            <h3 className="text-xl font-semibold text-foreground mb-2">Design Work</h3>
+            <h3 className="text-xl font-semibold text-foreground mb-2">Photoshop Works</h3>
             <p className="text-sm text-muted-foreground mb-4">Graphic Design & Photoshop Projects</p>
 
             <div className="relative rounded-lg overflow-hidden mb-4 bg-muted aspect-video flex items-center justify-center">
