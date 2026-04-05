@@ -6,11 +6,13 @@ import { useState } from "react";
 import advocateCard from "@/assets/projects/advocate-card.png";
 import ibeuBanner from "@/assets/projects/ibeu-banner.png";
 import rhamzanCard from "@/assets/projects/rhamzan-card.png";
+import marinaPalace from "@/assets/projects/marina-palace.png";
 
 const galleryImages = [
   { src: advocateCard, alt: "Advocate Business Card Design" },
   { src: ibeuBanner, alt: "Indian Bank Employees Union Banner" },
   { src: rhamzanCard, alt: "Rhamzan Matching Centre Card" },
+  { src: marinaPalace, alt: "Marina Palace Hotel Flyer Design" },
 ];
 
 const Projects = () => {
