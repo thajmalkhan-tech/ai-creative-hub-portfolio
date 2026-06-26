@@ -70,7 +70,10 @@ const Hero = () => {
           <motion.img
             src={profileImage}
             alt="Thajmal Khan - AI Student & Creative Technologist"
+            width={320}
+            height={320}
             className="w-72 h-72 md:w-80 md:h-80 rounded-2xl object-cover border border-border shadow-lg"
+            fetchPriority="high"
             whileHover={{ scale: 1.05, rotate: 2 }}
             transition={{ type: "spring", stiffness: 300 }}
           />
