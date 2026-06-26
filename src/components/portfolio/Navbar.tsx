@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from "react";
-import type { MouseEvent, TouchEvent } from "react";
+import { useState, useEffect } from "react";
+import type { MouseEvent } from "react";
 import { Menu, X, Download } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
@@ -18,20 +18,11 @@ const navLinks = [
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const toggleLockRef = useRef(false);
 
-  const handleToggleMenu = (event: MouseEvent<HTMLButtonElement> | TouchEvent<HTMLButtonElement>) => {
+  const handleToggleMenu = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     event.stopPropagation();
-
-    if (toggleLockRef.current) return;
-
-    toggleLockRef.current = true;
     setIsOpen((v) => !v);
-
-    window.setTimeout(() => {
-      toggleLockRef.current = false;
-    }, 220);
   };
 
   useEffect(() => {
@@ -89,7 +80,6 @@ const Navbar = () => {
           <button
             type="button"
             className="text-foreground p-2 -mr-2 rounded-md hover:bg-muted/40 active:bg-muted/60 touch-manipulation"
-            onTouchEnd={handleToggleMenu}
             onClick={handleToggleMenu}
             aria-label="Toggle menu"
             aria-expanded={isOpen}
