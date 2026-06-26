@@ -31,8 +31,8 @@ const About = () => {
         <div>
           <motion.h2 variants={fadeUp} className="text-3xl font-bold text-foreground mb-6">About Me</motion.h2>
           <motion.p variants={fadeUp} className="text-muted-foreground leading-relaxed mb-6">
-            I am a second-year B.Sc Artificial Intelligence student at The New
-            College (2027 – Expected). I have built a Python-based voice
+            I am a B.Sc Artificial Intelligence student at The New
+            College. I have built a Python-based voice
             recognition AI assistant capable of controlling laptop functions
             through voice commands. I combine technical knowledge in AI and
             automation with creative expertise in video editing and digital
