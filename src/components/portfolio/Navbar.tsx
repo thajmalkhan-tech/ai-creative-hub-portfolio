@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, Download } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
+import resumeAsset from "@/assets/Thajmal_Khan_Resume.pdf.asset.json";
 
 const navLinks = [
   { label: "Home", href: "#home" },
