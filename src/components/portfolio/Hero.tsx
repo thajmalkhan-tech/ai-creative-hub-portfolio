@@ -40,7 +40,7 @@ const Hero = () => {
             Welcome
           </motion.p>
           <motion.h1 variants={fadeUp} className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground leading-tight mb-4">
-            Thajmal Khan
+            THAJMAL KHAN
           </motion.h1>
           <motion.p variants={fadeUp} className="text-lg text-accent font-medium mb-4">
             AI Student · Video Editor · Creative Technologist
