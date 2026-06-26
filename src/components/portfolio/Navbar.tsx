@@ -25,6 +25,20 @@ const Navbar = () => {
     setIsOpen((v) => !v);
   };
 
+  const handleMobileNavClick = (event: MouseEvent<HTMLAnchorElement>, href: string) => {
+    event.preventDefault();
+    setIsOpen(false);
+
+    const target = document.querySelector<HTMLElement>(href);
+    if (!target) return;
+
+    window.history.replaceState(null, "", href);
+    window.setTimeout(() => {
+      const top = target.getBoundingClientRect().top + window.scrollY - 64;
+      window.scrollTo({ top: Math.max(top, 0), behavior: "smooth" });
+    }, 80);
+  };
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll);
@@ -111,7 +125,7 @@ const Navbar = () => {
                 >
                   <a
                     href={l.href}
-                    onClick={() => setIsOpen(false)}
+                    onClick={(event) => handleMobileNavClick(event, l.href)}
                     className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
                   >
                     {l.label}
