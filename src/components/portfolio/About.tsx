@@ -1,5 +1,6 @@
 import { Bot, Video, Megaphone, GraduationCap, Download } from "lucide-react";
 import { motion } from "framer-motion";
+import { toast } from "sonner";
 
 const highlights = [
   { icon: Bot, label: "AI Development" },
