@@ -1,4 +1,4 @@
-import { Bot, Video, Megaphone, GraduationCap } from "lucide-react";
+import { Bot, Video, Megaphone, GraduationCap, Download } from "lucide-react";
 import { motion } from "framer-motion";
 
 const highlights = [
@@ -52,6 +52,17 @@ const About = () => {
               </motion.div>
             ))}
           </motion.div>
+          <motion.a
+            variants={fadeUp}
+            href="/Thajmal_Khan_Resume.pdf"
+            download
+            className="mt-6 inline-flex items-center gap-2 rounded-md bg-accent px-5 py-3 text-sm font-semibold text-accent-foreground shadow-md hover:bg-accent/90 transition-colors"
+            whileHover={{ scale: 1.03, y: -2 }}
+            transition={{ type: "spring", stiffness: 400 }}
+          >
+            <Download className="w-4 h-4" />
+            Download Resume (PDF)
+          </motion.a>
         </div>
 
         {/* Education */}
