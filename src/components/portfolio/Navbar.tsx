@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import type { MouseEvent, TouchEvent } from "react";
 import { Menu, X, Download } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
@@ -17,6 +18,22 @@ const navLinks = [
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const toggleLockRef = useRef(false);
+
+  const handleToggleMenu = (event: MouseEvent<HTMLButtonElement> | TouchEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (toggleLockRef.current) return;
+
+    toggleLockRef.current = true;
+    setIsOpen((v) => !v);
+
+    window.setTimeout(() => {
+      toggleLockRef.current = false;
+    }, 220);
+  };
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll);
@@ -72,12 +89,11 @@ const Navbar = () => {
           <button
             type="button"
             className="text-foreground p-2 -mr-2 rounded-md hover:bg-muted/40 active:bg-muted/60 touch-manipulation"
-            onClick={(e) => {
-              e.stopPropagation();
-              setIsOpen((v) => !v);
-            }}
+            onTouchEnd={handleToggleMenu}
+            onClick={handleToggleMenu}
             aria-label="Toggle menu"
             aria-expanded={isOpen}
+            aria-controls="mobile-navigation-menu"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -88,6 +104,7 @@ const Navbar = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            id="mobile-navigation-menu"
             className="md:hidden bg-background border-t border-border overflow-hidden"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
