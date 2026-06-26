@@ -70,9 +70,14 @@ const Navbar = () => {
         {/* Mobile toggle */}
         <div className="md:hidden flex items-center gap-2">
           <button
-            className="text-foreground"
-            onClick={() => setIsOpen(!isOpen)}
+            type="button"
+            className="text-foreground p-2 -mr-2 rounded-md hover:bg-muted/40 active:bg-muted/60 touch-manipulation"
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsOpen((v) => !v);
+            }}
             aria-label="Toggle menu"
+            aria-expanded={isOpen}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
