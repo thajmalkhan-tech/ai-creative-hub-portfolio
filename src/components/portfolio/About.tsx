@@ -1,6 +1,7 @@
 import { Bot, Video, Megaphone, GraduationCap, Download } from "lucide-react";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
+import resumeAsset from "@/assets/Thajmal_Khan_Resume.pdf.asset.json";
 
 const highlights = [
   { icon: Bot, label: "AI Development" },
