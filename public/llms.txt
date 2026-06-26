@@ -1,0 +1,9 @@
+# Thajmal Khan — Portfolio
+
+> Portfolio of Thajmal Khan, B.Sc Artificial Intelligence student, video editor, and creative technologist based in Chennai, India.
+
+Thajmal Khan is studying Artificial Intelligence at The New College in Chennai. The site showcases his AI projects (such as a Python voice assistant), graphic design and Photoshop works, video editing experience, and offers contact options for collaboration and internships.
+
+## Pages
+
+- [Home](/): About, skills, services, projects, experience, and contact form for Thajmal Khan.

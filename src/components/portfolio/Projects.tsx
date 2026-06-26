@@ -125,12 +125,14 @@ const Projects = () => {
 
               <button
                 onClick={prev}
+                aria-label="Previous project"
                 className="absolute left-2 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm rounded-full p-1.5 text-foreground hover:bg-background transition-colors"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
               <button
                 onClick={next}
+                aria-label="Next project"
                 className="absolute right-2 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm rounded-full p-1.5 text-foreground hover:bg-background transition-colors"
               >
                 <ChevronRight className="w-4 h-4" />
@@ -142,10 +144,11 @@ const Projects = () => {
             </p>
 
             <div className="flex justify-center gap-1.5">
-              {galleryImages.map((_, i) => (
+              {galleryImages.map((img, i) => (
                 <button
                   key={i}
                   onClick={() => setCurrentIndex(i)}
+                  aria-label={`Show project ${i + 1}: ${img.alt}`}
                   className={`w-2 h-2 rounded-full transition-colors ${
                     i === currentIndex ? "bg-primary" : "bg-muted-foreground/30"
                   }`}

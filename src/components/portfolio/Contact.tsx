@@ -101,6 +101,7 @@ const Contact = () => {
           <motion.form variants={fadeUp} onSubmit={handleSubmit} className="space-y-4">
             <Input
               placeholder="Your Name"
+              aria-label="Your Name"
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
               required
@@ -108,12 +109,14 @@ const Contact = () => {
             <Input
               type="email"
               placeholder="Your Email"
+              aria-label="Your Email"
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
               required
             />
             <Textarea
               placeholder="Your Message"
+              aria-label="Your Message"
               rows={5}
               value={form.message}
               onChange={(e) => setForm({ ...form, message: e.target.value })}
