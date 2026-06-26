@@ -46,9 +46,9 @@ const Hero = () => {
             AI Student · Video Editor · Creative Technologist
           </motion.p>
           <motion.p variants={fadeUp} className="text-muted-foreground leading-relaxed mb-8 max-w-lg">
-            B.Sc Artificial Intelligence student at The New College
-            (Expected 2027), passionate about AI development, automation, and
-            creative digital content production.
+            B.Sc Artificial Intelligence student at The New College, passionate
+            about AI development, automation, and creative digital content
+            production.
           </motion.p>
           <motion.div variants={fadeUp} className="flex gap-4 flex-wrap">
             <Button asChild size="lg" className="hover:scale-105 transition-transform">
