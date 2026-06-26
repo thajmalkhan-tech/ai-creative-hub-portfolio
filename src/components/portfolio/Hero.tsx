@@ -46,7 +46,7 @@ const Hero = () => {
             AI Student · Video Editor · Creative Technologist
           </motion.p>
           <motion.p variants={fadeUp} className="text-muted-foreground leading-relaxed mb-8 max-w-lg">
-            Second-year B.Sc Artificial Intelligence student at The New College
+            B.Sc Artificial Intelligence student at The New College
             (Expected 2027), passionate about AI development, automation, and
             creative digital content production.
           </motion.p>
