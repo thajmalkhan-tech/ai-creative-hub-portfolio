@@ -1,6 +1,7 @@
 import { Bot, Video, Megaphone, GraduationCap, Download } from "lucide-react";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
+import resumeAsset from "@/assets/Thajmal_Khan_Resume.pdf.asset.json";
 
 const highlights = [
   { icon: Bot, label: "AI Development" },
@@ -55,7 +56,7 @@ const About = () => {
           </motion.div>
           <motion.a
             variants={fadeUp}
-            href="/Thajmal_Khan_Resume.pdf"
+            href={resumeAsset.url}
             download
             onClick={() => toast.success("Resume download started")}
             className="mt-6 inline-flex items-center gap-2 rounded-md bg-accent px-5 py-3 text-sm font-semibold text-accent-foreground shadow-md hover:bg-accent/90 transition-colors"

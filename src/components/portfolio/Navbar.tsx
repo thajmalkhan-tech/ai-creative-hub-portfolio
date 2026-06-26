@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, Download } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
+import resumeAsset from "@/assets/Thajmal_Khan_Resume.pdf.asset.json";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -56,7 +57,7 @@ const Navbar = () => {
             ))}
           </ul>
           <a
-            href="/Thajmal_Khan_Resume.pdf"
+            href={resumeAsset.url}
             download
             onClick={() => toast.success("Resume download started")}
             className="inline-flex items-center gap-2 rounded-md bg-accent px-4 py-2 text-sm font-medium text-accent-foreground shadow-sm hover:bg-accent/90 transition-colors"
@@ -107,7 +108,7 @@ const Navbar = () => {
               ))}
               <li>
                 <a
-                  href="/Thajmal_Khan_Resume.pdf"
+                  href={resumeAsset.url}
                   download
                   onClick={() => {
                     setIsOpen(false);
