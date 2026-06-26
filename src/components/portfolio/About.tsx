@@ -56,7 +56,7 @@ const About = () => {
           </motion.div>
           <motion.a
             variants={fadeUp}
-            href="/Thajmal_Khan_Resume.pdf"
+            href={resumeAsset.url}
             download
             onClick={() => toast.success("Resume download started")}
             className="mt-6 inline-flex items-center gap-2 rounded-md bg-accent px-5 py-3 text-sm font-semibold text-accent-foreground shadow-md hover:bg-accent/90 transition-colors"
