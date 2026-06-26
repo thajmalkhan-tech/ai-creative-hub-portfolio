@@ -1,5 +1,6 @@
 import { Bot, Video, Megaphone, GraduationCap, Download } from "lucide-react";
 import { motion } from "framer-motion";
+import { toast } from "sonner";
 
 const highlights = [
   { icon: Bot, label: "AI Development" },
@@ -56,6 +57,7 @@ const About = () => {
             variants={fadeUp}
             href="/Thajmal_Khan_Resume.pdf"
             download
+            onClick={() => toast.success("Resume download started")}
             className="mt-6 inline-flex items-center gap-2 rounded-md bg-accent px-5 py-3 text-sm font-semibold text-accent-foreground shadow-md hover:bg-accent/90 transition-colors"
             whileHover={{ scale: 1.03, y: -2 }}
             transition={{ type: "spring", stiffness: 400 }}
