@@ -58,6 +58,7 @@ const Navbar = () => {
           <a
             href="/Thajmal_Khan_Resume.pdf"
             download
+            onClick={() => toast.success("Resume download started")}
             className="inline-flex items-center gap-2 rounded-md bg-accent px-4 py-2 text-sm font-medium text-accent-foreground shadow-sm hover:bg-accent/90 transition-colors"
           >
             <Download className="w-4 h-4" />
@@ -108,7 +109,10 @@ const Navbar = () => {
                 <a
                   href="/Thajmal_Khan_Resume.pdf"
                   download
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => {
+                    setIsOpen(false);
+                    toast.success("Resume download started");
+                  }}
                   className="inline-flex items-center gap-2 rounded-md bg-accent px-4 py-2 text-sm font-medium text-accent-foreground shadow-sm hover:bg-accent/90 transition-colors"
                 >
                   <Download className="w-4 h-4" />
